@@ -1,5 +1,5 @@
-E:/My Cocos2dx projects/ABC_Adventure/build/CMakeFiles/ABC_Adventure.dir
-E:/My Cocos2dx projects/ABC_Adventure/build/CMakeFiles/SYNC_RESOURCE-ABC_Adventure.dir
+E:/My Cocos2dx projects/ABC_Adventure/build/CMakeFiles/ABC_Adventures.dir
+E:/My Cocos2dx projects/ABC_Adventure/build/CMakeFiles/SYNC_RESOURCE-ABC_Adventures.dir
 E:/My Cocos2dx projects/ABC_Adventure/build/CMakeFiles/ALL_BUILD.dir
 E:/My Cocos2dx projects/ABC_Adventure/build/CMakeFiles/ZERO_CHECK.dir
 E:/My Cocos2dx projects/ABC_Adventure/build/engine/cocos/core/CMakeFiles/cocos2d.dir

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\AppDelegate.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\HelloWorldScene.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\main.cpp">
+      <Filter>Source Files\proj.win32</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\cocos2d\cocos\precheader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\AppDelegate.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\HelloWorldScene.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\main.h">
+      <Filter>Source Files\proj.win32</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\resource.h">
+      <Filter>Source Files\proj.win32</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\CloseNormal.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\CloseSelected.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\HelloWorld.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\configs\main_config.json">
+      <Filter>Resources\configs</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\fonts\Marker Felt.ttf">
+      <Filter>Resources\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\fonts\arial.ttf">
+      <Filter>Resources\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\res\.gitkeep">
+      <Filter>Resources\res</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\My Cocos2dx projects\ABC_Adventure\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\game.rc">
+      <Filter>Source Files\proj.win32</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{785A87FF-7EBD-34FF-BF9B-28F58561147B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\configs">
+      <UniqueIdentifier>{4A120A9F-65D2-3088-B78F-99E4EDC3C1FB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\fonts">
+      <UniqueIdentifier>{E60C09A0-7273-3FA9-A68B-2400095C6199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\res">
+      <UniqueIdentifier>{EE39D558-7B5B-3E2F-8FF4-25A0612BD9BF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{726D1C23-6039-3DEF-8E3F-3C75972632E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes">
+      <UniqueIdentifier>{0C713C5A-B565-3F88-8F4F-BEE8E38D252C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\proj.win32">
+      <UniqueIdentifier>{833928A0-9DE3-3A17-B0E6-0DD863173A7E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

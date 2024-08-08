@@ -23,6 +23,15 @@ ABC_Adventure_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 ABC_Adventure_SOURCE_DIR:STATIC=E:/My Cocos2dx projects/ABC_Adventure
 
+//Value Computed by CMake
+ABC_Adventures_BINARY_DIR:STATIC=E:/My Cocos2dx projects/ABC_Adventure/build
+
+//Value Computed by CMake
+ABC_Adventures_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+ABC_Adventures_SOURCE_DIR:STATIC=E:/My Cocos2dx projects/ABC_Adventure
+
 //Build editor support for cocostudio
 BUILD_EDITOR_COCOSTUDIO:BOOL=ON
 
@@ -196,7 +205,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=ABC_Adventure
+CMAKE_PROJECT_NAME:STATIC=ABC_Adventures
 
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=rc
