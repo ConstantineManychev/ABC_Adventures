@@ -1,0 +1,9 @@
+{
+	"startup_settings" : {
+		"is_full_screen" : false,
+		"screen_size" : {
+			"height" : 600,
+			"width" : 800
+		}			
+	}
+}
