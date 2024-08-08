@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\AppDelegate.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\HelloWorldScene.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\main.cpp">
+      <Filter>Source Files\proj.win32</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\cocos2d\cocos\precheader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scenes\MainMenuScene.cpp">
+      <Filter>Source Files\Classes\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Managers\DataManager.cpp">
+      <Filter>Source Files\Classes\managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helpers\DataHelper.cpp">
+      <Filter>Source Files\Classes\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helpers\JsonHelper.cpp">
+      <Filter>Source Files\Classes\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Basics\BValue.cpp">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Managers\GameDirector.cpp">
+      <Filter>Source Files\Classes\managers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\AppDelegate.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\HelloWorldScene.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\main.h">
+      <Filter>Source Files\proj.win32</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\resource.h">
+      <Filter>Source Files\proj.win32</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\CloseNormal.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\CloseSelected.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\HelloWorld.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\fonts\Marker Felt.ttf">
+      <Filter>Resources\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\fonts\arial.ttf">
+      <Filter>Resources\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\res\.gitkeep">
+      <Filter>Resources\res</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scenes\MainMenuScene.h">
+      <Filter>Source Files\Classes\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Managers\DataManager.h">
+      <Filter>Source Files\Classes\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helpers\DataHelper.h">
+      <Filter>Source Files\Classes\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Types\BasicDataTypes.h">
+      <Filter>Source Files\Classes\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helpers\JsonHelper.h">
+      <Filter>Source Files\Classes\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonDefines.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Basics\BValue.h">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Managers\GameDirector.h">
+      <Filter>Source Files\Classes\managers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\My Cocos2dx projects\ABC_Adventure\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\game.rc">
+      <Filter>Source Files\proj.win32</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{785A87FF-7EBD-34FF-BF9B-28F58561147B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\fonts">
+      <UniqueIdentifier>{E60C09A0-7273-3FA9-A68B-2400095C6199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\res">
+      <UniqueIdentifier>{EE39D558-7B5B-3E2F-8FF4-25A0612BD9BF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{726D1C23-6039-3DEF-8E3F-3C75972632E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes">
+      <UniqueIdentifier>{0C713C5A-B565-3F88-8F4F-BEE8E38D252C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\proj.win32">
+      <UniqueIdentifier>{833928A0-9DE3-3A17-B0E6-0DD863173A7E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\scenes">
+      <UniqueIdentifier>{d6f4205f-5c94-4ed8-af05-f44f2dd3e892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\managers">
+      <UniqueIdentifier>{84bccff4-a896-4c37-817c-a6208524d34e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\helpers">
+      <UniqueIdentifier>{ac1b1183-a467-4c84-9727-5a5f40172ce8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\types">
+      <UniqueIdentifier>{c91e1f61-8beb-4fd5-b5e7-cbca7f1310da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\basics">
+      <UniqueIdentifier>{b4fb6914-25ba-48cc-8253-8952a985f66c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+</Project>
