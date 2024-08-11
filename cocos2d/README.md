@@ -138,8 +138,8 @@ How to start a new game
     $ cd cocos2d-x
     $ ./setup.py
     $ source FILE_TO_SAVE_SYSTEM_VARIABLE
-    $ cocos new MyGame -p com.your_company.mygame -l cpp -d NEW_PROJECTS_DIR
-    $ cd NEW_PROJECTS_DIR/MyGame
+    $ cocos new ABC_Adventure -p com.ConstantineManychev.ABC_Adventure -l cpp -d NEW_PROJECTS_DIR
+    $ cd NEW_PROJECTS_DIR/ABC_Adventure
     $ mkdir build
     $ cd build
     $ cocos run --proj-dir .. -p [mac|windows|android|linux|ios]

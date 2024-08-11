@@ -13,9 +13,6 @@
     <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\cocos2d\cocos\precheader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Scenes\MainMenuScene.cpp">
-      <Filter>Source Files\Classes\scenes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Managers\DataManager.cpp">
       <Filter>Source Files\Classes\managers</Filter>
     </ClCompile>
@@ -29,6 +26,27 @@
       <Filter>Source Files\Classes\basics</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Managers\GameDirector.cpp">
+      <Filter>Source Files\Classes\managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scenes\GreetingsScene.cpp">
+      <Filter>Source Files\Classes\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Basics\BaseScene.cpp">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Logics\LocationLogic.cpp">
+      <Filter>Source Files\Classes\logics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Basics\BaseLocation.cpp">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Managers\ScenesManager.cpp">
+      <Filter>Source Files\Classes\managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scenes\MainGameScene.cpp">
+      <Filter>Source Files\Classes\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Managers\ViewManager.cpp">
       <Filter>Source Files\Classes\managers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -63,9 +81,6 @@
     <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\res\.gitkeep">
       <Filter>Resources\res</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Scenes\MainMenuScene.h">
-      <Filter>Source Files\Classes\scenes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Managers\DataManager.h">
       <Filter>Source Files\Classes\managers</Filter>
     </ClInclude>
@@ -85,6 +100,27 @@
       <Filter>Source Files\Classes\basics</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Managers\GameDirector.h">
+      <Filter>Source Files\Classes\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scenes\GreetingsScene.h">
+      <Filter>Source Files\Classes\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Basics\BaseScene.h">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Logics\LocationLogic.h">
+      <Filter>Source Files\Classes\logics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Basics\BaseLocation.h">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Managers\ScenesManager.h">
+      <Filter>Source Files\Classes\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scenes\MainGameScene.h">
+      <Filter>Source Files\Classes\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Managers\ViewManager.h">
       <Filter>Source Files\Classes\managers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -129,6 +165,9 @@
     </Filter>
     <Filter Include="Source Files\Classes\basics">
       <UniqueIdentifier>{b4fb6914-25ba-48cc-8253-8952a985f66c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\logics">
+      <UniqueIdentifier>{def09fc6-0536-4a0d-b33e-272ff8af8105}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

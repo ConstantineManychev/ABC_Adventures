@@ -15,6 +15,8 @@ public:
 
 	static GameDirector* getInstance();
 
+	void startGame();
+
 };
 
 #define GD GameDirector::getInstance()

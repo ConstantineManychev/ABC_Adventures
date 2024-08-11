@@ -809,11 +809,35 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\AppDelegate.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Basics\BValue.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Basics\BaseLocation.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Basics\BaseScene.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\CommonDefines.h" />
     <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\HelloWorldScene.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Helpers\DataHelper.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Helpers\JsonHelper.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Logics\LocationLogic.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Managers\DataManager.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Managers\GameDirector.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Managers\ScenesManager.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Scenes\GreetingsScene.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Scenes\MainMenuScene.h" />
+    <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Types\BasicDataTypes.h" />
     <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\main.h" />
     <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\resource.h" />
     <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\AppDelegate.cpp" />
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Basics\BValue.cpp" />
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Basics\BaseLocation.cpp" />
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Basics\BaseScene.cpp" />
     <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Helpers\DataHelper.cpp" />
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Helpers\JsonHelper.cpp" />
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Logics\LocationLogic.cpp" />
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Managers\DataManager.cpp" />
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Managers\GameDirector.cpp" />
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Managers\ScenesManager.cpp" />
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Scenes\GreetingsScene.cpp" />
+    <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\Scenes\MainMenuScene.cpp" />
     <ClCompile Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\main.cpp" />
     <ResourceCompile Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\game.rc" />
     <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Resources\CloseNormal.png" />

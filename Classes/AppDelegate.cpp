@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
-#include "Scenes/MainMenuScene.h"
+
 #include "Managers/DataManager.h"
+#include "Managers/GameDirector.h"
 #include "Types/BasicDataTypes.h"
 
 #if USE_AUDIO_ENGINE
@@ -8,12 +9,7 @@
 using namespace cocos2d::experimental;
 #endif
 
-USING_NS_CC;
-
-static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320);
-static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
-static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
-static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
+_USEC;
 
 AppDelegate::AppDelegate()
 {
@@ -41,7 +37,6 @@ static int register_all_packages()
 
 void AppDelegate::onInit()
 {
-
 	DM->loadMainInfo("configs/main_config.json");
 }
 
@@ -58,14 +53,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 		if (mainInfo.isFullScreen)
 		{
-			glview = GLViewImpl::createWithFullScreen("ABC_Adventure");
+			glview = GLViewImpl::createWithFullScreen("ABC_Adventures");
 		}
 		else
 		{
-			glview = GLViewImpl::createWithRect("ABC_Adventure", cocos2d::Rect(0, 0, mainInfo.screenWidth, mainInfo.screenHeight));
+			glview = GLViewImpl::createWithRect("ABC_Adventures", cocos2d::Rect(0, 0, mainInfo.screenWidth, mainInfo.screenHeight));
 		}
 #else
-        glview = GLViewImpl::create("ABC_Adventure");
+        glview = GLViewImpl::create("ABC_Adventures");
 #endif
         director->setOpenGLView(glview);
     }
@@ -74,9 +69,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     register_all_packages();
 
-    auto scene = MainMenuScene::createScene();
-
-    director->runWithScene(scene);
+	GD->startGame();
 
     return true;
 }

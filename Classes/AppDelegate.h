@@ -26,12 +26,15 @@
 #define  _APP_DELEGATE_H_
 
 #include "cocos2d.h"
+#include "CommonDefines.h"
 
 /**
 @brief    The cocos2d Application.
 
 Private inheritance here hides part of interface from Director.
 */
+_CSTART
+
 class  AppDelegate : private cocos2d::Application
 {
 public:
@@ -48,6 +51,8 @@ public:
 
 	void onInit();
 };
+
+_CEND
 
 #endif // _APP_DELEGATE_H_
 

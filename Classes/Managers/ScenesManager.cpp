@@ -1,14 +1,37 @@
-#include "GameDirector.h"
+#include "ScenesManager.h"
 
 _USEC
 
-GameDirector::GameDirector()
+ScenesManager::ScenesManager()
 {
 
 }
 
-GameDirector* GameDirector::getInstance()
+ScenesManager* ScenesManager::getInstance()
 {
-	static GameDirector instance;
+	static ScenesManager instance;
 	return &instance;
+}
+
+void ScenesManager::openScene(const std::string& aSceneID)
+{
+	auto sceneIt = mScenes.find(aSceneID);
+
+	if (sceneIt != mScenes.end())
+	{
+		auto scene = sceneIt->second;
+
+		Director::getInstance()->runWithScene(scene);
+
+		scene->useDefaultView();
+	}
+	else
+	{
+
+	}
+}
+
+void ScenesManager::registerScene(const std::string& aSceneID, BaseScene* aScene)
+{
+	mScenes[aSceneID] = aScene;
 }

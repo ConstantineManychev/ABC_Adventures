@@ -1,24 +1,31 @@
-#ifndef __GAME_DIRECTOR_H__
-#define __GAME_DIRECTOR_H__
+#ifndef __SCENES_MANAGER_H__
+#define __SCENES_MANAGER_H__
 
 #include "CommonDefines.h"
 
+#include "Basics/BaseScene.h"
+
 _CSTART
 
-class GameDirector
+class ScenesManager
 {
 private:
 
-	GameDirector();
+	ScenesManager();
+
+	std::map<std::string, BaseScene*> mScenes;
 
 public:
 
-	static GameDirector* getInstance();
+	static ScenesManager* getInstance();
+
+	void registerScene(const std::string& aSceneID, BaseScene* aScene);
+	void openScene(const std::string& aSceneID);
 
 };
 
-#define GD GameDirector::getInstance()
+#define SM ScenesManager::getInstance()
 
 _CEND
 
-#endif // __GAME_DIRECTOR_H__
+#endif // __SCENES_MANAGER_H__

@@ -55,18 +55,27 @@ if(APPLE OR WINDOWS)
 endif()
 
 # add cross-platforms source files and header files 
-list(APPEND GAME_SOURCE
-     Classes/AppDelegate.cpp
-     Classes/HelloWorldScene.cpp
+file(GLOB_RECURSE GAME_SOURCE
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/*.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/Basics/*.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/Managers/*.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/Types/*.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/Scenes/*.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/Helpers/*.cpp"
      )
-list(APPEND GAME_HEADER
-     Classes/AppDelegate.h
-     Classes/HelloWorldScene.h
+file(GLOB_RECURSE GAME_HEADER
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/*.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/Basics/*.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/Managers/*.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/Types/*.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/Scenes/*.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Classes/Helpers/*.h"
+
      )
 
 if(ANDROID)
     # change APP_NAME to the share library name for Android, it's value depend on AndroidManifest.xml
-    set(APP_NAME MyGame)
+    set(APP_NAME ABC_Adventure)
     list(APPEND GAME_SOURCE
          proj.android/app/jni/hellocpp/main.cpp
          )

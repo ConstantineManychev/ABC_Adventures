@@ -1,0 +1,14 @@
+{
+	"id" : "greetings",
+	"children" : 
+	{
+		"title" : 
+		{
+			"type" : "",
+			"res": "",
+			"params" :
+			{
+			}
+		}
+	}
+}
