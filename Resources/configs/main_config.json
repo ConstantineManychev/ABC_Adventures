@@ -4,6 +4,10 @@
 		"screen_size" : {
 			"height" : 600,
 			"width" : 800
-		}			
+		},
+		"sprites_size" : {
+			"height" : 2160,
+			"width" : 3840
+		}					
 	}
 }

@@ -824,7 +824,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\Classes\Basics\BaseScene.h" />
     <ClInclude Include="..\Classes\Basics\BValue.h" />
     <ClInclude Include="..\Classes\CommonDefines.h" />
-    <ClInclude Include="..\Classes\Helpers\DataHelper.h" />
+    <ClInclude Include="..\Classes\Helpers\NodeHelper.h" />
     <ClInclude Include="..\Classes\Helpers\JsonHelper.h" />
     <ClInclude Include="..\Classes\Logics\LocationLogic.h" />
     <ClInclude Include="..\Classes\Managers\DataManager.h" />
@@ -841,7 +841,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\Classes\Basics\BaseLocation.cpp" />
     <ClCompile Include="..\Classes\Basics\BaseScene.cpp" />
     <ClCompile Include="..\Classes\Basics\BValue.cpp" />
-    <ClCompile Include="..\Classes\Helpers\DataHelper.cpp" />
+    <ClCompile Include="..\Classes\Helpers\NodeHelper.cpp" />
     <ClCompile Include="..\Classes\Helpers\JsonHelper.cpp" />
     <ClCompile Include="..\Classes\Logics\LocationLogic.cpp" />
     <ClCompile Include="..\Classes\Managers\DataManager.cpp" />

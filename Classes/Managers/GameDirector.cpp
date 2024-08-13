@@ -3,6 +3,8 @@
 #include "ScenesManager.h"
 
 #include "Scenes/MainGameScene.h"
+#include "DataManager.h"
+#include "ViewManager.h"
 
 _USEC
 
@@ -19,7 +21,9 @@ GameDirector* GameDirector::getInstance()
 
 void GameDirector::startGame()
 {
-	SM->registerScene( "main", MainGameScene::create() );
+	DM->parseViewConfigs();
+
+	SM->registerScene( "main", MainGameScene::create());
 
 	SM->openScene("main");
 }

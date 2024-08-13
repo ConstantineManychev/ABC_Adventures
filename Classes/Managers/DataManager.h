@@ -12,8 +12,9 @@
 
 #include "CommonDefines.h"
 
-#include "Helpers/DataHelper.h"
+#include "Helpers/JsonHelper.h"
 #include "Types/BasicDataTypes.h"
+#include "Basics/BValue.h"
 
 #include <map>
 
@@ -32,6 +33,9 @@ private:
  	sMainInfo mMainInfo;
 
 	std::map< std::string, sWindowInfo > mWindowsInfos;
+	std::map< std::string, BValue > mViewsInfos;
+
+	void parseViewConfig(const std::string& aConfigPath);
 
 public:
 
@@ -42,12 +46,16 @@ public:
 	void loadMainInfo(const std::string& configPath);
 	void loadWindows(const std::string& folderPath);
 
-	const sMainInfo* getMainInfo() const;
+	void parseViewConfigs();
+
+	const sMainInfo& getMainInfo() const;
 	const sWindowInfo* getWindowInfo(const std::string& aWndID) const;
+
+	const BValue& getViewInfoByID(const std::string& aID) const;
 
 	void saveMainInfo();
 
-	sMainInfo& getMainInfo();
+	float getScaleY();
 
 
 };

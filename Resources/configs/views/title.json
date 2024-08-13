@@ -1,0 +1,28 @@
+{
+	"id" : "title",
+	"type" : "Node",
+	"params" :
+	{
+		"background_color" : "<255, 255, 255",
+		"pos_x" : 0.5,
+		"pos_y" : 0.5,
+		"anch_x" : 0.5,
+		"anch_y" : 0.5,
+		"content_size" : "!3840, 2160"
+	},
+	"children" : 
+	{
+		"title" : 
+		{
+			"type" : "Sprite",
+			"params" :
+			{
+				"res": "res/Title.png",
+				"pos_x" : 0.5,
+				"pos_y" : 0.7,
+				"anch_x" : 0.5,
+				"anch_y" : 0.5
+			}
+		}
+	}
+}

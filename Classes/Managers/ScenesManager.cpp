@@ -1,5 +1,7 @@
 #include "ScenesManager.h"
 
+#include "DataManager.h"
+
 _USEC
 
 ScenesManager::ScenesManager()

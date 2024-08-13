@@ -13,14 +13,14 @@ DataManager* DataManager::getInstance()
 	return &instance;
 }
 
-void DataManager::setResourcePath(const std::string& resPath)
+void DataManager::setResourcePath(const std::string& aResPath)
 {
-	mResourcePath = resPath;
+	mResourcePath = aResPath;
 }
 
-void DataManager::loadMainInfo(const std::string& configPath)
+void DataManager::loadMainInfo(const std::string& aConfigPath)
 {
-	std::string content = FileUtils::getInstance()->getStringFromFile(configPath);
+	std::string content = FileUtils::getInstance()->getStringFromFile(aConfigPath);
 
 	bool isLoadingCorrect = false;
 
@@ -35,7 +35,11 @@ void DataManager::loadMainInfo(const std::string& configPath)
 			{
 				isLoadingCorrect = true;
 				parseStartupInfo(docIt->value, mMainInfo);
+
+				mMainInfo.scaleY = mMainInfo.screenHeight / mMainInfo.spritesHeight;
+				mMainInfo.scaleX = mMainInfo.screenWidth / mMainInfo.spritesWidth;
 			}
+
 		}
 	}
 }
@@ -64,11 +68,76 @@ void DataManager::parseStartupInfo(const rapidjson::Value& aValue, sMainInfo& aM
 					mMainInfo.screenWidth = widthIt->value.GetInt();
 				}
 			}
+			else if (valIt->name == "sprites_size" && valIt->value.IsObject())
+			{
+				const auto& sizeObject = valIt->value.GetObject();
+
+				auto heightIt = sizeObject.FindMember("height");
+				auto widthIt = sizeObject.FindMember("width");
+
+				if (heightIt != sizeObject.MemberEnd() && heightIt->value.IsInt()
+					&& widthIt != sizeObject.MemberEnd() && widthIt->value.IsInt())
+				{
+					mMainInfo.spritesHeight = heightIt->value.GetInt();
+					mMainInfo.spritesWidth = widthIt->value.GetInt();
+				}
+			}
 		}
 	}
 }
 
-sMainInfo& DataManager::getMainInfo()
+void DataManager::parseViewConfigs()
+{
+	BValue values;
+	JsonHelper::parseBValueFromJsonConfig("configs/views/views_list.json", values);
+
+	if (values.isVector())
+	{
+		auto valVec = values.getValueVector();
+		for (auto val : valVec)
+		{
+			if (val.isString())
+			{
+				parseViewConfig(val.getString());
+			}
+		}
+	}
+}
+
+void DataManager::parseViewConfig(const std::string& aConfigPath)
+{
+	BValue values;
+	JsonHelper::parseBValueFromJsonConfig(aConfigPath, values);
+	if (values.isMap())
+	{
+		auto valMap = values.getValueMap();
+
+		auto itID = valMap.find("id");
+		if (itID != valMap.end() && itID->second.isString())
+		{
+			mViewsInfos[itID->second.getString()] = values;
+		}
+	}
+
+}
+
+const sMainInfo& DataManager::getMainInfo() const
 {
 	return mMainInfo;
+}
+
+float DataManager::getScaleY()
+{
+	return mMainInfo.scaleY;
+}
+
+const BValue& DataManager::getViewInfoByID(const std::string& aID) const
+{
+	auto it = mViewsInfos.find(aID);
+	if (it != mViewsInfos.end())
+	{
+		return it->second;
+	}
+
+	return BValue::Null;
 }

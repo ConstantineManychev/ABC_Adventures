@@ -10,13 +10,23 @@ struct sMainInfo
 {
 	bool isFullScreen;
 
-	int screenHeight;
-	int screenWidth;
+	float screenHeight;
+	float screenWidth;
+	
+	float spritesHeight;
+	float spritesWidth;
+
+	float scaleY;
+	float scaleX;
 
 	sMainInfo()
 		: isFullScreen(false)
-		, screenHeight(600)
-		, screenWidth(800)
+		, screenHeight(600.f)
+		, screenWidth(800.f)
+		, spritesHeight(600.f)
+		, spritesWidth(800.f)
+		, scaleY(1.f)
+		, scaleX(1.f)
 	{}
 };
 

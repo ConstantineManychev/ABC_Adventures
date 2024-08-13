@@ -18,6 +18,8 @@ _CSTART
 class JsonHelper
 {
 public:
+
+	static void parseBValueFromJsonConfig(const std::string& aConfigPath, BValue& aBValue);
     static bool saveBValueToJsonValue( rapidjson::Value& jsonValue, const BValue& bValue, rapidjson::Document::AllocatorType& allocator );
     static void parseBValueFromJsonValue( const rapidjson::Value& jsonValue, BValue& bValue );
 };

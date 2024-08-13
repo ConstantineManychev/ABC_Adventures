@@ -16,9 +16,6 @@
     <ClCompile Include="..\Classes\Managers\DataManager.cpp">
       <Filter>Source Files\Classes\managers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Helpers\DataHelper.cpp">
-      <Filter>Source Files\Classes\helpers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Helpers\JsonHelper.cpp">
       <Filter>Source Files\Classes\helpers</Filter>
     </ClCompile>
@@ -48,6 +45,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Managers\ViewManager.cpp">
       <Filter>Source Files\Classes\managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helpers\NodeHelper.cpp">
+      <Filter>Source Files\Classes\helpers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,9 +84,6 @@
     <ClInclude Include="..\Classes\Managers\DataManager.h">
       <Filter>Source Files\Classes\managers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Helpers\DataHelper.h">
-      <Filter>Source Files\Classes\helpers</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Types\BasicDataTypes.h">
       <Filter>Source Files\Classes\types</Filter>
     </ClInclude>
@@ -122,6 +119,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Managers\ViewManager.h">
       <Filter>Source Files\Classes\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helpers\NodeHelper.h">
+      <Filter>Source Files\Classes\helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +168,9 @@
     </Filter>
     <Filter Include="Source Files\Classes\logics">
       <UniqueIdentifier>{def09fc6-0536-4a0d-b33e-272ff8af8105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\locations">
+      <UniqueIdentifier>{65cf88d6-c6ad-4745-becc-eba540f4c4b1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
