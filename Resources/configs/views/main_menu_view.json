@@ -1,5 +1,5 @@
 {
-	"id" : "title",
+	"id" : "main_menu",
 	"type" : "Node",
 	"params" :
 	{
@@ -8,7 +8,8 @@
 		"pos_y" : 0.5,
 		"anch_x" : 0.5,
 		"anch_y" : 0.5,
-		"content_size" : "!3840, 2160"
+		"content_size" : "!3840, 2160",
+		"layer" : 1
 	},
 	"children" : 
 	{
@@ -21,7 +22,8 @@
 				"pos_x" : 0.5,
 				"pos_y" : 0.7,
 				"anch_x" : 0.5,
-				"anch_y" : 0.5
+				"anch_y" : 0.5,
+				"layer" : 1
 			}
 		}
 	}

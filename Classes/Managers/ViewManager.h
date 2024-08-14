@@ -1,22 +1,57 @@
 #ifndef __VIEW_MANAGER_H__
 #define __VIEW_MANAGER_H__
 
-#include "CommonDefines.h"
+#include <unordered_set>
+
 #include "cocos2d.h"
+
+#include "CommonDefines.h"
+
 #include "Basics/BValue.h"
+#include "Basics/BaseAction.h"
 
 _CSTART
 
 class ViewManager
 {
+	enum class Params
+	{
+		NONE = 0,
+		CHILDREN,
+		PARAMS,
+		ACTIONS,
+
+		ID,
+		RES,
+
+		LAYER,
+		OPACITY,
+
+		POS_X,
+		POS_Y,
+		ANCH_X,
+		ANCH_Y,
+	};
+
 private:
 
 	ViewManager();
 
-	std::map<std::string, Node*> mViews;
+	const std::unordered_set<std::string> cExcludeParams = { "children", "actions", "creation" };
+	const std::unordered_map<std::string, Params> cParamTypeMap = {
+		{"children", Params::CHILDREN}, {"params", Params::PARAMS}, {"actions", Params::ACTIONS},
+		{"id", Params::ID}, {"res", Params::RES},
+		{"layer", Params::LAYER}, {"opacity", Params::OPACITY},
+		{"pos_x", Params::POS_X}, {"pos_y", Params::POS_Y},{"anch_x", Params::ANCH_X}, {"anch_y", Params::ANCH_Y}
+	};
+
+	std::unordered_map <std::string, Node*> mViews;
+	std::unordered_map < Node*, std::unordered_map < std::string, Vector< FiniteTimeAction* > > > mViewsActions;
 
 	Node* createNodeFromBValue(const BValue& aBValue, Node* aParentNode = nullptr);
 	void fillNodeParamFromBValue(Node* aNode, const std::string& aParamID, const BValue& aBValue);
+
+	FiniteTimeAction* createActionFromBValue(const BValue& aBValue, Node* aNode);
 
 public:
 

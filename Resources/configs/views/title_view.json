@@ -1,0 +1,59 @@
+{
+	"id" : "title",
+	"type" : "Node",
+	"params" :
+	{
+		"background_color" : "<255, 255, 255",
+		"pos_x" : 0.5,
+		"pos_y" : 0.5,
+		"anch_x" : 0.5,
+		"anch_y" : 0.5,
+		"content_size" : "!3840, 2160",
+		"layer" : 1,
+		"opacity" : 0
+	},
+	"children" : 
+	{
+		"title" : 
+		{
+			"type" : "Sprite",
+			"creation" : 
+			{
+				"on_create" : 
+				[
+					{
+						"start_action" : "onStart"
+					}
+				]
+			},
+			"actions" : 
+			{
+				"onStart" : 
+				[
+					{
+						"runAction" : "fade_in",
+						"duration" : 2.5
+					},
+					{
+						"runAction" : "delay_time",
+						"duration" : 2.5
+					},
+					{
+						"runAction" : "fade_out",
+						"duration" : 2.5
+					}
+				]
+			},
+			"params" :
+			{
+				"res": "res/Title.png",
+				"pos_x" : 0.5,
+				"pos_y" : 0.7,
+				"anch_x" : 0.5,
+				"anch_y" : 0.5,
+				"layer" : 1,
+				"opacity" : 0
+			}
+		}
+	}
+}

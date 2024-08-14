@@ -25,7 +25,10 @@ Node* ViewManager::createViewByID(const std::string& aID)
 
 	result = createNodeFromBValue(viewInfo);
 
-	result->setScale(DM->getScaleY());
+	if (result)
+	{
+		result->setScale(DM->getScaleY());
+	}
 
 	return result;
 }
@@ -36,38 +39,62 @@ Node* ViewManager::createNodeFromBValue(const BValue& aBValue, Node* aParentNode
 	
 	if (aBValue.isMap())
 	{
-		auto& valMap = aBValue.getValueMap();
+		const auto& valMap = aBValue.getValueMap();
 
 		auto it = valMap.find("type");
-		if ( it != valMap.end() &&  it->second.isString())
+		if (it != valMap.end() && it->second.isString())
 		{
 			result = NodeHelper::createNodeForType(it->second.getString());
+		}
 			
-			if (result)
+		if (result)
+		{
+			auto itChildren = valMap.find("children");
+			auto itActions = valMap.find("actions");
+
+			if (aParentNode)
 			{
-				if (aParentNode)
-				{
-					result->setParent(aParentNode);
-				}
+				result->setParent(aParentNode);
+			}
 
-				for (auto it = valMap.begin(); it != valMap.end(); ++it)
+			std::string paramName;
+			for (auto it = valMap.begin(); it != valMap.end(); ++it)
+			{
+				paramName = it->first;
+				if (cExcludeParams.find(paramName) == cExcludeParams.end())
 				{
-					if (it->first == "children")
-					{
-						continue;
-					}
-					fillNodeParamFromBValue(result, it->first, it->second);
+					fillNodeParamFromBValue(result, paramName, it->second);
 				}
+			}
 
-				auto itChildren = valMap.find("children");
-				if (itChildren != valMap.end())
-				{
-					fillNodeParamFromBValue(result, itChildren->first, itChildren->second);
-				}
+				
+			if (itChildren != valMap.end())
+			{
+				fillNodeParamFromBValue(result, itChildren->first, itChildren->second);
+			}
 
-				if (aParentNode)
+				
+			if (itActions != valMap.end())
+			{
+				createActionFromBValue(itActions->second, result);
+			}
+
+			if (aParentNode)
+			{
+				result->setParent(nullptr);
+			}
+
+			//For first time just start every action
+			//Need to make by listener and events
+			auto actionsListIt = mViewsActions.find(result);
+			if (actionsListIt != mViewsActions.end())
+			{
+				auto& actionsList = actionsListIt->second;
+				for (auto actionsVec = actionsList.begin(); actionsVec != actionsList.end(); ++actionsVec)
 				{
-					result->setParent(nullptr);
+					auto sequence = Sequence::create(actionsVec->second);
+
+					result->runAction(sequence);
 				}
 			}
 		}
@@ -80,36 +107,34 @@ void ViewManager::fillNodeParamFromBValue(Node* aNode, const std::string& aParam
 {
 	if (aNode)
 	{
+		auto itParam = cParamTypeMap.find(aParamID);
+		Params paramType = (itParam != cParamTypeMap.end()) ? itParam->second : Params::NONE;
+
 		auto valueType = aBValue.getType();
 
 		switch (valueType)
 		{
 			case BValue::Type::MAP:
 			{
-				int type = 0;
-				if (aParamID == "children")
-				{
-					type = 1;
-				}
-				else if (aParamID == "params")
-				{
-					type = 2;
-				}
-
-				auto& valMap = aBValue.getValueMap();
+				const auto& valMap = aBValue.getValueMap();
 
 				for (auto it = valMap.begin(); it != valMap.end(); ++it)
 				{
-					switch (type)
+					switch (paramType)
 					{
-						case 1:
+						case Params::CHILDREN:
 						{
 							aNode->addChild(createNodeFromBValue(it->second, aNode));
 							break;
 						}
-						case 2:
+						case Params::PARAMS:
 						{
 							fillNodeParamFromBValue(aNode, it->first, it->second);
+							break;
+						}
+						case Params::ACTIONS:
+						{
+							createActionFromBValue(it->second, aNode);
 							break;
 						}
 						default:
@@ -128,19 +153,41 @@ void ViewManager::fillNodeParamFromBValue(Node* aNode, const std::string& aParam
 			}
 			case BValue::Type::STRING:
 			{
-				if (aParamID == "id")
+				switch (paramType)
 				{
-					aNode->setName(aBValue.getString());
-				}
-				else if (aParamID == "res")
-				{
-					auto sprite = dynamic_cast<Sprite*>(aNode);
-					if (sprite)
+					case Params::ID:
 					{
-						sprite->initWithFile(aBValue.getString());
+						aNode->setName(aBValue.getString());
+						break;
+					}
+					case Params::RES:
+					{
+						auto sprite = dynamic_cast<Sprite*>(aNode);
+						if (sprite)
+						{
+							sprite->initWithFile(aBValue.getString());
+						}
+						break;
 					}
 				}
 
+				break;
+			}
+			case BValue::Type::INTEGER:
+			{
+				switch (paramType)
+				{
+					case Params::LAYER:
+					{
+						aNode->setLocalZOrder(aBValue.getInt());
+						break;
+					}
+					case Params::OPACITY:
+					{
+						aNode->setOpacity(aBValue.getInt());
+						break;
+					}
+				}
 				break;
 			}
 			case BValue::Type::FLOAT:
@@ -155,29 +202,37 @@ void ViewManager::fillNodeParamFromBValue(Node* aNode, const std::string& aParam
 				}
 				else
 				{
-					parentSize = Director::getInstance()->getVisibleSize();
+					const auto& mainInfo = DM->getMainInfo();
+					parentSize = Size(mainInfo.screenWidth, mainInfo.screenHeight);
 				}
 				//Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-				if (aParamID == "pos_x")
+				switch (paramType)
 				{
-					aNode->setPositionX(parentSize.width * aBValue.getFloat());// +origin.x);
-				}
-				else if (aParamID == "pos_y")
-				{
-					aNode->setPositionY(parentSize.height * aBValue.getFloat());// +origin.y);
-				}
-				else if (aParamID == "anch_x")
-				{
-					auto anch = aNode->getAnchorPoint();
-					anch.x = aBValue.getFloat();
-					aNode->setAnchorPoint(anch);
-				}
-				else if (aParamID == "anch_y")
-				{
-					auto anch = aNode->getAnchorPoint();
-					anch.y = aBValue.getFloat();
-					aNode->setAnchorPoint(anch);
+					case Params::POS_X:
+					{
+						aNode->setPositionX(parentSize.width * aBValue.getFloat());// +origin.x);
+						break;
+					}
+					case Params::POS_Y:
+					{
+						aNode->setPositionY(parentSize.height * aBValue.getFloat());// +origin.y);
+						break;
+					}
+					case Params::ANCH_X:
+					{
+						auto anch = aNode->getAnchorPoint();
+						anch.x = aBValue.getFloat();
+						aNode->setAnchorPoint(anch);
+						break;
+					}
+					case Params::ANCH_Y:
+					{
+						auto anch = aNode->getAnchorPoint();
+						anch.y = aBValue.getFloat();
+						aNode->setAnchorPoint(anch);
+						break;
+					}
 				}
 				break;
 			}
@@ -197,6 +252,78 @@ void ViewManager::fillNodeParamFromBValue(Node* aNode, const std::string& aParam
 			}
 		}
 	}
+}
+
+FiniteTimeAction* ViewManager::createActionFromBValue(const BValue& aBValue, Node* aNode)
+{
+	FiniteTimeAction* result = nullptr;
+
+	auto getParamInteger = [](const BValueMap& aMap, const std::string& aParam)
+	{
+		auto it = aMap.find(aParam);
+		if (it != aMap.end() && it->second.isInteger())
+		{
+			return it->second.getInt();
+		}
+
+	}; 
+	auto getParamFloat = [](const BValueMap& aMap, const std::string& aParam)
+	{
+		auto it = aMap.find(aParam);
+		if (it != aMap.end() 
+			&& it->second.isFloat() || it->second.isDouble())
+		{
+			return it->second.getFloat();
+		}
+
+	};
+
+	if (aBValue.isMap())
+	{
+		std::string actionVecName;
+		std::string actionName;
+
+		const auto& valMap = aBValue.getValueMap();
+		for (auto it = valMap.begin(); it != valMap.end(); ++it)
+		{
+			if (it->second.isVector())
+			{
+				actionVecName = it->first;
+
+				const auto& actionsVec = it->second.getValueVector();
+
+				for (auto action : actionsVec)
+				{
+					if (action.isMap())
+					{
+						const auto& actionMap = action.getValueMap();
+
+						auto it = actionMap.find("runAction");
+						if (it != actionMap.end() && it->second.isString())
+						{
+							actionName = it->second.getString();
+							if (actionName == "fade_in")
+							{
+								result = FadeIn::create( getParamFloat(actionMap, "duration") );
+							}
+							else if (actionName == "fade_out")
+							{
+								result = FadeOut::create( getParamFloat(actionMap, "duration") );
+							}
+							else if (actionName == "delay_time")
+							{
+								result = DelayTime::create( getParamFloat(actionMap, "duration") );
+							}
+						}
+
+						mViewsActions[aNode][actionVecName].pushBack(result);
+					}
+				}
+			}
+		}
+	}
+
+	return result;
 }
 
 void ViewManager::removeViewByID(const std::string& aID)

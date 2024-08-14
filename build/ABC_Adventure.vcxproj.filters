@@ -49,6 +49,9 @@
     <ClCompile Include="..\Classes\Helpers\NodeHelper.cpp">
       <Filter>Source Files\Classes\helpers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Basics\BaseAction.cpp">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\AppDelegate.h">
@@ -122,6 +125,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Helpers\NodeHelper.h">
       <Filter>Source Files\Classes\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Basics\BaseAction.h">
+      <Filter>Source Files\Classes\basics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
