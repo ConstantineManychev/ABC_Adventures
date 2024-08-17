@@ -2,8 +2,8 @@
 	"startup_settings" : {
 		"is_full_screen" : false,
 		"screen_size" : {
-			"height" : 600,
-			"width" : 800
+			"height" : 720,
+			"width" : 1280
 		},
 		"sprites_size" : {
 			"height" : 2160,

@@ -13,14 +13,14 @@
 	},
 	"children" : 
 	{
-		"title" : 
+		"back" : 
 		{
 			"type" : "Sprite",
 			"params" :
 			{
-				"res": "res/Title.png",
+				"res": "res/main_background.webp",
 				"pos_x" : 0.5,
-				"pos_y" : 0.7,
+				"pos_y" : 0.5,
 				"anch_x" : 0.5,
 				"anch_y" : 0.5,
 				"layer" : 1

@@ -1,11 +1,15 @@
 #ifndef __BASE_LOCATION_H__
 #define __BASE_LOCATION_H__
 
+#include "cocos2d.h"
+
 #include "Logics/LocationLogic.h"
 
 _CSTART
 
-class BaseLocation : LocationLogic
+class BaseLocation 
+	: public Node
+	, LocationLogic
 {
 public:
 };

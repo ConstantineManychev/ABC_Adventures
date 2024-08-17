@@ -15,12 +15,16 @@ private:
 
 	std::map<std::string, BaseScene*> mScenes;
 
+	BaseScene* mCurrentScene;
+
 public:
 
 	static ScenesManager* getInstance();
 
 	void registerScene(const std::string& aSceneID, BaseScene* aScene);
 	void openScene(const std::string& aSceneID);
+
+	BaseScene* getCurrentScene();
 
 };
 

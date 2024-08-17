@@ -41,6 +41,10 @@
 					{
 						"runAction" : "fade_out",
 						"duration" : 2.5
+					},
+					{
+						"runAction" : "change_view",
+						"id" : "main_menu"
 					}
 				]
 			},

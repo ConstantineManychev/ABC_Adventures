@@ -5,6 +5,7 @@
 _USEC
 
 ScenesManager::ScenesManager()
+	: mCurrentScene(nullptr)
 {
 
 }
@@ -21,11 +22,11 @@ void ScenesManager::openScene(const std::string& aSceneID)
 
 	if (sceneIt != mScenes.end())
 	{
-		auto scene = sceneIt->second;
+		mCurrentScene = sceneIt->second;
 
-		Director::getInstance()->runWithScene(scene);
+		Director::getInstance()->runWithScene(mCurrentScene);
 
-		scene->useDefaultView();
+		mCurrentScene->useDefaultView();
 	}
 	else
 	{
@@ -36,4 +37,9 @@ void ScenesManager::openScene(const std::string& aSceneID)
 void ScenesManager::registerScene(const std::string& aSceneID, BaseScene* aScene)
 {
 	mScenes[aSceneID] = aScene;
+}
+
+BaseScene* ScenesManager::getCurrentScene()
+{
+	return mCurrentScene;
 }

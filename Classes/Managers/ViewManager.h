@@ -53,6 +53,8 @@ private:
 
 	FiniteTimeAction* createActionFromBValue(const BValue& aBValue, Node* aNode);
 
+	void changeView(const std::string& aViewID);
+
 public:
 
 	static ViewManager* getInstance();

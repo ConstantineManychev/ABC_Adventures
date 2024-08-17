@@ -4,6 +4,7 @@
 #include "Helpers/NodeHelper.h"
 
 #include "DataManager.h"
+#include "ScenesManager.h"
 
 _USEC
 
@@ -258,23 +259,26 @@ FiniteTimeAction* ViewManager::createActionFromBValue(const BValue& aBValue, Nod
 {
 	FiniteTimeAction* result = nullptr;
 
-	auto getParamInteger = [](const BValueMap& aMap, const std::string& aParam)
+	auto getParamString = [](const BValueMap& aMap, const std::string& aParam)
 	{
+		std::string result;
 		auto it = aMap.find(aParam);
-		if (it != aMap.end() && it->second.isInteger())
+		if (it != aMap.end() && it->second.isString())
 		{
-			return it->second.getInt();
+			result = it->second.getString();
 		}
-
+		return result;
 	}; 
 	auto getParamFloat = [](const BValueMap& aMap, const std::string& aParam)
 	{
+		float result = 0.f;
 		auto it = aMap.find(aParam);
 		if (it != aMap.end() 
 			&& it->second.isFloat() || it->second.isDouble())
 		{
-			return it->second.getFloat();
+			result = it->second.getFloat();
 		}
+		return result;
 
 	};
 
@@ -314,6 +318,13 @@ FiniteTimeAction* ViewManager::createActionFromBValue(const BValue& aBValue, Nod
 							{
 								result = DelayTime::create( getParamFloat(actionMap, "duration") );
 							}
+							else if (actionName == "change_view")
+							{
+								std::string viewID = getParamString(actionMap, "id");
+								result = CallFunc::create([this, viewID]() {
+									changeView(viewID);
+								});
+							}
 						}
 
 						mViewsActions[aNode][actionVecName].pushBack(result);
@@ -324,6 +335,23 @@ FiniteTimeAction* ViewManager::createActionFromBValue(const BValue& aBValue, Nod
 	}
 
 	return result;
+}
+
+void ViewManager::changeView(const std::string& aViewID)
+{
+	auto currentScene = SM->getCurrentScene();
+
+	if (currentScene)
+	{
+		currentScene->removeAllChildren();
+
+		auto view = getViewByID(aViewID);
+
+		if (view)
+		{
+			currentScene->addChild(view);
+		}
+	}
 }
 
 void ViewManager::removeViewByID(const std::string& aID)
