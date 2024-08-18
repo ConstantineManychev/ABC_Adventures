@@ -55,6 +55,12 @@ public:
 
 	void saveMainInfo();
 
+	void DataManager::calcScale();
+
+	void setScale(float aX, float aY);
+	void setScaleY(float aY);
+	void setScaleX(float aX);
+
 	float getScaleY();
 
 

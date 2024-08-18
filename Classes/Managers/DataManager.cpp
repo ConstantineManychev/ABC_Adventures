@@ -35,9 +35,6 @@ void DataManager::loadMainInfo(const std::string& aConfigPath)
 			{
 				isLoadingCorrect = true;
 				parseStartupInfo(docIt->value, mMainInfo);
-
-				mMainInfo.scaleY = mMainInfo.screenHeight / mMainInfo.spritesHeight;
-				mMainInfo.scaleX = mMainInfo.screenWidth / mMainInfo.spritesWidth;
 			}
 
 		}
@@ -128,7 +125,30 @@ const sMainInfo& DataManager::getMainInfo() const
 
 float DataManager::getScaleY()
 {
-	return mMainInfo.scaleY;
+	return mMainInfo.scaleY > mMainInfo.scaleX ? mMainInfo.scaleY : mMainInfo.scaleX;
+}
+
+void DataManager::setScale(float aX, float aY)
+{
+	setScaleX(aX);
+	setScaleY(aY);
+}
+
+void DataManager::setScaleY(float aY)
+{
+	mMainInfo.scaleY = aY;
+}
+
+void DataManager::setScaleX(float aX)
+{
+	mMainInfo.scaleX = aX;
+}
+
+void DataManager::calcScale()
+{
+	auto screenSize = Director::getInstance()->getWinSize();
+
+	setScale(screenSize.width / mMainInfo.spritesWidth, screenSize.height / mMainInfo.spritesHeight);
 }
 
 const BValue& DataManager::getViewInfoByID(const std::string& aID) const

@@ -65,6 +65,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
+
+	DM->calcScale();
+
     const auto& glviewFrameSize = glview->getFrameSize();
 
     register_all_packages();

@@ -18,12 +18,64 @@
 			"type" : "Sprite",
 			"params" :
 			{
-				"res": "res/main_background.webp",
+				"res": "res/main_menu/MM_Background.png",
 				"pos_x" : 0.5,
 				"pos_y" : 0.5,
 				"anch_x" : 0.5,
 				"anch_y" : 0.5,
 				"layer" : 1
+			}
+		},
+		"ground" : 
+		{
+			"type" : "Sprite",
+			"params" :
+			{
+				"res": "res/main_menu/MM_ground.png",
+				"pos_x" : 0.5,
+				"pos_y" : 0.4,
+				"anch_x" : 0.5,
+				"anch_y" : 0.5,
+				"layer" : 2
+			}
+		},
+		"A_Letter" : 
+		{
+			"type" : "Sprite",
+			"params" :
+			{
+				"res": "res/main_menu/MM_A_Letter.png",
+				"pos_x" : 0.3,
+				"pos_y" : 0.7,
+				"anch_x" : 0.5,
+				"anch_y" : 0.5,
+				"layer" : 3
+			}
+		},
+		"B_Letter" : 
+		{
+			"type" : "Sprite",
+			"params" :
+			{
+				"res": "res/main_menu/MM_B_Letter.png",
+				"pos_x" : 0.4,
+				"pos_y" : 0.7,
+				"anch_x" : 0.5,
+				"anch_y" : 0.5,
+				"layer" : 3
+			}
+		},
+		"C_Letter" : 
+		{
+			"type" : "Sprite",
+			"params" :
+			{
+				"res": "res/main_menu/MM_C_Letter.png",
+				"pos_x" : 0.5,
+				"pos_y" : 0.7,
+				"anch_x" : 0.5,
+				"anch_y" : 0.5,
+				"layer" : 3
 			}
 		}
 	}

@@ -203,10 +203,8 @@ void ViewManager::fillNodeParamFromBValue(Node* aNode, const std::string& aParam
 				}
 				else
 				{
-					const auto& mainInfo = DM->getMainInfo();
-					parentSize = Size(mainInfo.screenWidth, mainInfo.screenHeight);
+					parentSize = Director::getInstance()->getWinSize();
 				}
-				//Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 				switch (paramType)
 				{
