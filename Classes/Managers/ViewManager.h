@@ -23,6 +23,9 @@ class ViewManager
 
 		ID,
 		RES,
+		RES_NORMAL,
+		RES_PRESSED,
+		RES_DISABLE,
 
 		LAYER,
 		OPACITY,
@@ -41,6 +44,7 @@ private:
 	const std::unordered_map<std::string, Params> cParamTypeMap = {
 		{"children", Params::CHILDREN}, {"params", Params::PARAMS}, {"actions", Params::ACTIONS},
 		{"id", Params::ID}, {"res", Params::RES},
+		{"res_normal", Params::RES_NORMAL},{"res_pressed", Params::RES_PRESSED},{"res_disable", Params::RES_DISABLE},
 		{"layer", Params::LAYER}, {"opacity", Params::OPACITY},
 		{"pos_x", Params::POS_X}, {"pos_y", Params::POS_Y},{"anch_x", Params::ANCH_X}, {"anch_y", Params::ANCH_Y}
 	};
@@ -64,6 +68,8 @@ public:
 	void removeViewByID(const std::string& aID);
 
 	Node* getViewByID(const std::string& aID);
+
+	void runActionForNode(Node* aNode, const std::string& aID);
 
 };
 

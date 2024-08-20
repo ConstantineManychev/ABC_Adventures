@@ -1,5 +1,7 @@
 #include "ViewManager.h"
 
+#include "ui/UIButton.h"
+
 #include "Helpers/JsonHelper.h"
 #include "Helpers/NodeHelper.h"
 
@@ -87,7 +89,8 @@ Node* ViewManager::createNodeFromBValue(const BValue& aBValue, Node* aParentNode
 
 			//For first time just start every action
 			//Need to make by listener and events
-			auto actionsListIt = mViewsActions.find(result);
+			runActionForNode(result, "onCreate");
+			/*auto actionsListIt = mViewsActions.find(result);
 			if (actionsListIt != mViewsActions.end())
 			{
 				auto& actionsList = actionsListIt->second;
@@ -97,7 +100,7 @@ Node* ViewManager::createNodeFromBValue(const BValue& aBValue, Node* aParentNode
 
 					result->runAction(sequence);
 				}
-			}
+			}*/
 		}
 	}
 
@@ -167,6 +170,33 @@ void ViewManager::fillNodeParamFromBValue(Node* aNode, const std::string& aParam
 						if (sprite)
 						{
 							sprite->initWithFile(aBValue.getString());
+						}
+						break;
+					}
+					case Params::RES_NORMAL:
+					{
+						auto btn = dynamic_cast<ui::Button*>(aNode);
+						if (btn)
+						{
+							btn->loadTextureNormal(aBValue.getString());
+						}
+						break;
+					}
+					case Params::RES_PRESSED:
+					{
+						auto btn = dynamic_cast<ui::Button*>(aNode);
+						if (btn)
+						{
+							btn->loadTexturePressed(aBValue.getString());
+						}
+						break;
+					}
+					case Params::RES_DISABLE:
+					{
+						auto btn = dynamic_cast<ui::Button*>(aNode);
+						if (btn)
+						{
+							btn->loadTextureDisabled(aBValue.getString());
 						}
 						break;
 					}
@@ -378,4 +408,20 @@ Node* ViewManager::getViewByID(const std::string& aID)
 	}
 
 	return result;
+}
+
+void ViewManager::runActionForNode(Node* aNode, const std::string& aID)
+{
+	auto actionsListIt = mViewsActions.find(aNode);
+	if (actionsListIt != mViewsActions.end())
+	{
+		auto& actionsList = actionsListIt->second;
+		auto actionIt = actionsList.find(aID);
+		if (actionIt != actionsList.end())
+		{
+			auto sequence = Sequence::create(actionIt->second);
+
+			aNode->runAction(sequence);
+		}
+	}
 }

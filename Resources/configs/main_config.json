@@ -1,6 +1,6 @@
 {
 	"startup_settings" : {
-		"is_full_screen" : true,
+		"is_full_screen" : false,
 		"screen_size" : {
 			"height" : 720,
 			"width" : 1024

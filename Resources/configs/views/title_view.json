@@ -17,18 +17,9 @@
 		"title" : 
 		{
 			"type" : "Sprite",
-			"creation" : 
-			{
-				"on_create" : 
-				[
-					{
-						"start_action" : "onStart"
-					}
-				]
-			},
 			"actions" : 
 			{
-				"onStart" : 
+				"onCreate" : 
 				[
 					{
 						"runAction" : "fade_in",
