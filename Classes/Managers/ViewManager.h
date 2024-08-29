@@ -30,6 +30,8 @@ class ViewManager
 		LAYER,
 		OPACITY,
 
+		IS_VISIBLE,
+
 		POS_X,
 		POS_Y,
 		ANCH_X,

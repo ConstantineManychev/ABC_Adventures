@@ -31,11 +31,15 @@ private:
 	std::string mResourcePath;
 
  	sMainInfo mMainInfo;
+	BValueMap mGlobalValues;
+	std::map<std::string, EventKeyboard::KeyCode> mKeys;
 
 	std::map< std::string, sWindowInfo > mWindowsInfos;
 	std::map< std::string, BValue > mViewsInfos;
 
 	void parseViewConfig(const std::string& aConfigPath);
+
+	EventKeyboard::KeyCode convertStringToKeyCode(const std::string& aID);
 
 public:
 
@@ -55,13 +59,16 @@ public:
 
 	void saveMainInfo();
 
-	void DataManager::calcScale();
+	void calcScale();
 
 	void setScale(float aX, float aY);
 	void setScaleY(float aY);
 	void setScaleX(float aX);
 
 	float getScaleY();
+
+	const BValue& getGlobalValue(const std::string& aID);
+	EventKeyboard::KeyCode getKey(const std::string& aID);
 
 
 };

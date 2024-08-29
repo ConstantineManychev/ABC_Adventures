@@ -35,7 +35,7 @@
 					},
 					{
 						"runAction" : "change_view",
-						"id" : "main_menu"
+						"id" : "stage_A"
 					}
 				]
 			},

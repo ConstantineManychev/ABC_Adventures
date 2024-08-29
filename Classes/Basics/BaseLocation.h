@@ -9,9 +9,21 @@ _CSTART
 
 class BaseLocation 
 	: public Node
-	, LocationLogic
+	, public LocationLogic
 {
+	typedef LocationLogic Parent;
+
 public:
+
+	static BaseLocation* create();
+
+	virtual void onOpen() override;
+
+private:
+
+	void setupGlobalTouchListener();
+	void setupGlobalKeyListener();
+
 };
 
 _CEND

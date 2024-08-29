@@ -3,11 +3,17 @@
 
 #include "CommonDefines.h"
 
+#include "Basics/BaseLocation.h"
+#include "Basics/Player.h"
+
 _CSTART
 
 class GameDirector
 {
 private:
+
+	BaseLocation* mCurrentLocation;
+	Player* mCurrentPlayer;
 
 	GameDirector();
 
@@ -16,6 +22,13 @@ public:
 	static GameDirector* getInstance();
 
 	void startGame();
+
+	void setLocation(BaseLocation* aLocation);
+	void setPlayer(Player* aPlayer);
+
+
+	BaseLocation* getCurrentLocation();
+	Player* getCurrentPlayer();
 
 };
 

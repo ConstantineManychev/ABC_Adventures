@@ -1,5 +1,6 @@
 {
-	"startup_settings" : {
+	"startup_settings" : 
+	{
 		"is_full_screen" : false,
 		"screen_size" : {
 			"height" : 720,
@@ -8,6 +9,14 @@
 		"sprites_size" : {
 			"height" : 2160,
 			"width" : 3840
-		}					
+		},
+		"keys" : {
+			"left" : "A",
+			"right" : "D"
+		}
+	},
+	"global_values" : 
+	{
+		"tale_paticle_path" : "res/tale_paticle.plist"
 	}
 }

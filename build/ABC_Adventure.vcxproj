@@ -821,9 +821,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Basics\BaseAction.h" />
+    <ClInclude Include="..\Classes\Basics\BaseBeing.h" />
     <ClInclude Include="..\Classes\Basics\BaseLocation.h" />
     <ClInclude Include="..\Classes\Basics\BaseScene.h" />
     <ClInclude Include="..\Classes\Basics\BValue.h" />
+    <ClInclude Include="..\Classes\Basics\Enemy.h" />
+    <ClInclude Include="..\Classes\Basics\Player.h" />
     <ClInclude Include="..\Classes\CommonDefines.h" />
     <ClInclude Include="..\Classes\Helpers\NodeHelper.h" />
     <ClInclude Include="..\Classes\Helpers\JsonHelper.h" />
@@ -840,9 +843,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\main.h" />
     <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\proj.win32\resource.h" />
     <ClCompile Include="..\Classes\Basics\BaseAction.cpp" />
+    <ClCompile Include="..\Classes\Basics\BaseBeing.cpp" />
     <ClCompile Include="..\Classes\Basics\BaseLocation.cpp" />
     <ClCompile Include="..\Classes\Basics\BaseScene.cpp" />
     <ClCompile Include="..\Classes\Basics\BValue.cpp" />
+    <ClCompile Include="..\Classes\Basics\Enemy.cpp" />
+    <ClCompile Include="..\Classes\Basics\Player.cpp" />
     <ClCompile Include="..\Classes\Helpers\NodeHelper.cpp" />
     <ClCompile Include="..\Classes\Helpers\JsonHelper.cpp" />
     <ClCompile Include="..\Classes\Logics\LocationLogic.cpp" />

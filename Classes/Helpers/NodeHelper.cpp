@@ -3,6 +3,9 @@
 
 #include "NodeHelper.h"
 #include "Basics/BaseLocation.h"
+#include "Basics/Enemy.h"
+#include "Basics/Player.h"
+#include "Basics/BaseLocation.h"
 #include "Logics/LocationLogic.h"
 
 
@@ -28,6 +31,14 @@ Node* NodeHelper::createNodeForType(const std::string& aType)
 	else if (aType == "Location")
 	{
 		result = BaseLocation::create();
+	}
+	else if (aType == "Player")
+	{
+		result = Player::create();
+	}
+	else if (aType == "Enemy")
+	{
+		result = Enemy::create();
 	}
 
 	return result;

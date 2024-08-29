@@ -1,0 +1,57 @@
+{
+	"id" : "stage_A",
+	"type" : "Location",
+	"params" :
+	{
+		"background_color" : "<255, 255, 255",
+		"pos_x" : 0.5,
+		"pos_y" : 0.5,
+		"anch_x" : 0.5,
+		"anch_y" : 0.5,
+		"content_size" : "!3840, 2160",
+		"layer" : 1
+	},
+	"children" : 
+	{
+		"back" : 
+		{
+			"type" : "Sprite",
+			"params" :
+			{
+				"res": "res/main_menu/MM_Background.png",
+				"pos_x" : 0.5,
+				"pos_y" : 0.5,
+				"anch_x" : 0.5,
+				"anch_y" : 0.5,
+				"layer" : 1
+			}
+		},
+		"ground" : 
+		{
+			"type" : "Sprite",
+			"params" :
+			{
+				"res": "res/main_menu/MM_ground.png",
+				"pos_x" : 0.5,
+				"pos_y" : 0.4,
+				"anch_x" : 0.5,
+				"anch_y" : 0.5,
+				"layer" : 2
+			}
+		},
+		"A_Letter" : 
+		{
+			"type" : "Player",
+			"params" :
+			{
+				"res": "res/main_menu/MM_A_Letter.png",
+				"pos_x" : 0.3,
+				"pos_y" : 0.7,
+				"anch_x" : 0.5,
+				"anch_y" : 0.5,
+				"layer" : 3,
+				"is_visible" : false
+			}
+		}
+	}
+}

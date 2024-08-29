@@ -9,6 +9,8 @@
 _USEC
 
 GameDirector::GameDirector()
+	: mCurrentLocation(nullptr)
+	, mCurrentPlayer(nullptr)
 {
 
 }
@@ -26,4 +28,23 @@ void GameDirector::startGame()
 	SM->registerScene( "main", MainGameScene::create());
 
 	SM->openScene("main");
+}
+
+void GameDirector::setLocation(BaseLocation* aLocation)
+{
+	mCurrentLocation = aLocation;
+}
+void GameDirector::setPlayer(Player* aPlayer)
+{
+	mCurrentPlayer = aPlayer;
+}
+
+
+BaseLocation* GameDirector::getCurrentLocation()
+{
+	return mCurrentLocation;
+}
+Player* GameDirector::getCurrentPlayer()
+{
+	return mCurrentPlayer;
 }

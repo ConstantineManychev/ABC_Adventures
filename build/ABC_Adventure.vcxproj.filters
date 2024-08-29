@@ -52,6 +52,15 @@
     <ClCompile Include="..\Classes\Basics\BaseAction.cpp">
       <Filter>Source Files\Classes\basics</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Basics\BaseBeing.cpp">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Basics\Enemy.cpp">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Basics\Player.cpp">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="E:\My Cocos2dx projects\ABC_Adventure\Classes\AppDelegate.h">
@@ -127,6 +136,15 @@
       <Filter>Source Files\Classes\helpers</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Basics\BaseAction.h">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Basics\BaseBeing.h">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Basics\Enemy.h">
+      <Filter>Source Files\Classes\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Basics\Player.h">
       <Filter>Source Files\Classes\basics</Filter>
     </ClInclude>
   </ItemGroup>

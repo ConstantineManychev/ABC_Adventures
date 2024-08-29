@@ -37,6 +37,18 @@ void DataManager::loadMainInfo(const std::string& aConfigPath)
 				parseStartupInfo(docIt->value, mMainInfo);
 			}
 
+			docIt = document.FindMember("global_values");
+			if (docIt != document.MemberEnd() )
+			{
+				BValue data = BValue();
+				JsonHelper::parseBValueFromJsonValue(docIt->value, data);
+
+				if (data.isMap())
+				{
+					mGlobalValues = data.getValueMap();
+				}
+			}
+
 		}
 	}
 }
@@ -58,11 +70,26 @@ void DataManager::parseStartupInfo(const rapidjson::Value& aValue, sMainInfo& aM
 				auto heightIt = sizeObject.FindMember("height");
 				auto widthIt = sizeObject.FindMember("width");
 
-				if ( heightIt != sizeObject.MemberEnd() && heightIt->value.IsInt()
-					&& widthIt != sizeObject.MemberEnd() && widthIt->value.IsInt() )
+				if ( heightIt != sizeObject.MemberEnd()
+					&& widthIt != sizeObject.MemberEnd())
 				{
-					mMainInfo.screenHeight = heightIt->value.GetInt();
-					mMainInfo.screenWidth = widthIt->value.GetInt();
+					if (heightIt->value.IsInt())
+					{
+						mMainInfo.screenHeight = static_cast<float>(heightIt->value.GetInt());
+					}
+					else if (heightIt->value.IsDouble() || heightIt->value.IsFloat())
+					{
+						mMainInfo.screenHeight = heightIt->value.GetFloat();
+					}
+
+					if (widthIt->value.IsInt())
+					{
+						mMainInfo.screenWidth = static_cast<float>(widthIt->value.GetInt());
+					}
+					else if (widthIt->value.IsDouble() || widthIt->value.IsFloat())
+					{
+						mMainInfo.screenWidth = widthIt->value.GetFloat();
+					}
 				}
 			}
 			else if (valIt->name == "sprites_size" && valIt->value.IsObject())
@@ -72,12 +99,44 @@ void DataManager::parseStartupInfo(const rapidjson::Value& aValue, sMainInfo& aM
 				auto heightIt = sizeObject.FindMember("height");
 				auto widthIt = sizeObject.FindMember("width");
 
-				if (heightIt != sizeObject.MemberEnd() && heightIt->value.IsInt()
-					&& widthIt != sizeObject.MemberEnd() && widthIt->value.IsInt())
+				if (heightIt != sizeObject.MemberEnd()
+					&& widthIt != sizeObject.MemberEnd())
 				{
-					mMainInfo.spritesHeight = heightIt->value.GetInt();
-					mMainInfo.spritesWidth = widthIt->value.GetInt();
+					if (heightIt->value.IsInt())
+					{
+						mMainInfo.spritesHeight = static_cast<float>(heightIt->value.GetInt());
+					}
+					else if (heightIt->value.IsDouble() || heightIt->value.IsFloat())
+					{
+						mMainInfo.spritesHeight = heightIt->value.GetFloat();
+					}
+
+					if (widthIt->value.IsInt())
+					{
+						mMainInfo.spritesWidth = static_cast<float>(widthIt->value.GetInt());
+					}
+					else if (widthIt->value.IsDouble() || widthIt->value.IsFloat())
+					{
+						mMainInfo.spritesWidth = widthIt->value.GetFloat();
+					}
 				}
+			}
+			else if (valIt->name == "keys" && valIt->value.IsObject())
+			{
+				const auto& keysObject = valIt->value.GetObject();
+
+				auto setupKey = [this, keysObject](const std::string& aID)
+				{
+					auto it = keysObject.FindMember(aID.c_str());
+					if (it != keysObject.MemberEnd() && it->value.IsString())
+					{
+						mKeys[it->name.GetString()] = convertStringToKeyCode(it->value.GetString());
+					}
+				};
+
+				setupKey("left");
+				setupKey("right");
+				
 			}
 		}
 	}
@@ -160,4 +219,43 @@ const BValue& DataManager::getViewInfoByID(const std::string& aID) const
 	}
 
 	return BValue::Null;
+}
+
+const BValue& DataManager::getGlobalValue(const std::string& aID)
+{
+	auto it = mGlobalValues.find(aID);
+	if (it != mGlobalValues.end())
+	{
+		return it->second;
+	}
+
+	return BValue::Null;
+}
+
+EventKeyboard::KeyCode DataManager::getKey(const std::string& aID)
+{
+	EventKeyboard::KeyCode result = EventKeyboard::KeyCode::KEY_NONE;
+	auto it = mKeys.find(aID);
+	if (it != mKeys.end())
+	{
+		result = it->second;
+	}
+
+	return result;
+}
+
+EventKeyboard::KeyCode DataManager::convertStringToKeyCode(const std::string& aID)
+{
+	EventKeyboard::KeyCode result = EventKeyboard::KeyCode::KEY_NONE;
+	
+	if (aID == "A")
+	{
+		result = EventKeyboard::KeyCode::KEY_A;
+	}
+	else if (aID == "D")
+	{
+		result = EventKeyboard::KeyCode::KEY_D;
+	}
+
+	return result;
 }

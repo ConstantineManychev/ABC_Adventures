@@ -1,6 +1,10 @@
 #include "ViewManager.h"
 
 #include "ui/UIButton.h"
+#include "ui/UIWidget.h"
+
+#include "Basics/BaseLocation.h"
+#include "Basics/Player.h"
 
 #include "Helpers/JsonHelper.h"
 #include "Helpers/NodeHelper.h"
@@ -47,7 +51,17 @@ Node* ViewManager::createNodeFromBValue(const BValue& aBValue, Node* aParentNode
 		auto it = valMap.find("type");
 		if (it != valMap.end() && it->second.isString())
 		{
-			result = NodeHelper::createNodeForType(it->second.getString());
+			auto typeName = it->second.getString();
+			result = NodeHelper::createNodeForType(typeName);
+
+			if (result && typeName == "Player")
+			{
+				auto location = dynamic_cast<BaseLocation*>(aParentNode);
+				if (location)
+				{
+					location->setupPlayer(result);
+				}
+			}
 		}
 			
 		if (result)
@@ -90,17 +104,30 @@ Node* ViewManager::createNodeFromBValue(const BValue& aBValue, Node* aParentNode
 			//For first time just start every action
 			//Need to make by listener and events
 			runActionForNode(result, "onCreate");
-			/*auto actionsListIt = mViewsActions.find(result);
-			if (actionsListIt != mViewsActions.end())
-			{
-				auto& actionsList = actionsListIt->second;
-				for (auto actionsVec = actionsList.begin(); actionsVec != actionsList.end(); ++actionsVec)
-				{
-					auto sequence = Sequence::create(actionsVec->second);
 
-					result->runAction(sequence);
-				}
-			}*/
+			auto btn = dynamic_cast<ui::Button*>(result);
+			if (btn)
+			{
+				btn->addTouchEventListener([result](Ref* sender, ui::Widget::TouchEventType type) {
+					switch (type) 
+					{
+					case ui::Widget::TouchEventType::BEGAN:
+						VM->runActionForNode(result, "onBtnClickDown");
+						break;
+					case ui::Widget::TouchEventType::MOVED:
+						VM->runActionForNode(result, "onBtnClickMove");
+						break;
+					case ui::Widget::TouchEventType::ENDED:
+						VM->runActionForNode(result, "onBtnClickUp");
+						break;
+					case ui::Widget::TouchEventType::CANCELED:
+						VM->runActionForNode(result, "onBtnClickCancel");
+						break;
+					default:
+						break;
+					}
+				});
+			}
 		}
 	}
 
@@ -202,6 +229,18 @@ void ViewManager::fillNodeParamFromBValue(Node* aNode, const std::string& aParam
 					}
 				}
 
+				break;
+			}
+			case BValue::Type::BOOLEAN:
+			{
+				switch (paramType)
+				{
+					case Params::IS_VISIBLE:
+					{
+						aNode->setVisible(aBValue.getBool());
+						break;
+					}
+				}
 				break;
 			}
 			case BValue::Type::INTEGER:
@@ -349,8 +388,9 @@ FiniteTimeAction* ViewManager::createActionFromBValue(const BValue& aBValue, Nod
 							else if (actionName == "change_view")
 							{
 								std::string viewID = getParamString(actionMap, "id");
-								result = CallFunc::create([this, viewID]() {
-									changeView(viewID);
+								result = CallFunc::create([viewID]() 
+								{
+									VM->changeView(viewID);
 								});
 							}
 						}
@@ -371,6 +411,10 @@ void ViewManager::changeView(const std::string& aViewID)
 
 	if (currentScene)
 	{
+		for (auto child : currentScene->getChildren())
+		{
+			removeViewByID(child->getName());
+		}
 		currentScene->removeAllChildren();
 
 		auto view = getViewByID(aViewID);
@@ -378,6 +422,12 @@ void ViewManager::changeView(const std::string& aViewID)
 		if (view)
 		{
 			currentScene->addChild(view);
+
+			auto location = dynamic_cast<BaseLocation*>(view);
+			if (location)
+			{
+				location->onOpen();
+			}
 		}
 	}
 }
